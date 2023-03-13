@@ -16,7 +16,7 @@
 <div class="row">
 @foreach (var lanche in Model)
 {
-    <div class="col-6">
+    <div class="col-md-4 col-sm-6  col-12">
         <h4>Lanche: @lanche.Nome</h4>
         <p><img src="@lanche.ImagemUrl"/></p>
         <p>Preço: @lanche.Preco.ToString("c")</p>
