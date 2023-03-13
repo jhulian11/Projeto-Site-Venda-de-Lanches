@@ -1,3 +1,4 @@
+#nullable enable
 namespace LanchesMac.Models
 {
     public class ErrorViewModel
