@@ -1,4 +1,5 @@
 ﻿using LanchesMac.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac.Models
 {
@@ -34,6 +35,12 @@ namespace LanchesMac.Models
             };
         }
 
+        public List<CarrinhoCompraItem> GetCarrinhoCompraItems()
+        {
+            return CarrinhoCompraItems ??= _context.CarrinhoCompraItens
+                .Where(c => c.CarrinhoCompraId == CarrinhoCompraId).Include(s => s.Lanche).ToList();
+        }
+
         public void AdicionarAoCarrinho(Lanche lanche)
         {
             var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(s =>
@@ -55,6 +62,13 @@ namespace LanchesMac.Models
             _context.SaveChanges();
         }
 
+        public decimal GetCarrinhoCompraTotal()
+        {
+            var total = _context.CarrinhoCompraItens.Where(c => c.CarrinhoCompraId == CarrinhoCompraId)
+                .Select(c => c.Lanche.Preco * c.Quantidade).Sum();
+
+            return total;
+        }
         public void RemoverDoCarrinho(Lanche lanche)
         {
             var carrinhoCompraItem = _context.CarrinhoCompraItens.SingleOrDefault(s =>
@@ -79,6 +93,14 @@ namespace LanchesMac.Models
             _context.SaveChanges();
 
             //return quantidadeLocal;
+        }
+
+        public void LimparCarrinho()
+        {
+            var carrinhoItens = _context.CarrinhoCompraItens.Where(c => c.CarrinhoCompraId == CarrinhoCompraId);
+            _context.CarrinhoCompraItens.RemoveRange(carrinhoItens);
+
+            _context.SaveChanges();
         }
     }
 }
