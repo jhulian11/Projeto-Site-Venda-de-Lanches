@@ -1,0 +1,15 @@
+﻿@model System.Linq.IOrderedEnumerable<LanchesMac.Models.Categoria>
+
+<div class="dropdown">
+    <a class="nav-link px-3 py-2 text-white dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-person me-1"></i> Lanches</a>
+    <ul class="dropdown-menu bg-dark">
+        @foreach (var categoria in Model)
+        {
+            <li><a class="dropdown-item text-white" asp-controller="Lanche" asp-action="List" asp-route-categoria="@categoria.CategoriaNome" >@categoria.CategoriaNome</a></li>
+        } 
+        <li class="dropdown-divider"></li>
+        <li>
+            <a class="dropdown-item text-white" asp-controller="Lanche" asp-action="List" asp-route-categoria="">Todos os Lanches</a>
+        </li>
+    </ul>
+</div>
