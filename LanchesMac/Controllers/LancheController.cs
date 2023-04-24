@@ -37,9 +37,10 @@ namespace LanchesMac.Controllers
                     lanches = _lancheRepository.Lanches.Where(l => l.Categoria.CategoriaNome.Equals("Natural"))
                         .OrderBy(l => l.Nome);
                 }
+                categoriaAtual = categoria.ToUpper();
+
             }
 
-            categoriaAtual = categoria.ToUpper();
 
             var lanchesListViewModel = new LancheListViewModel
             {
