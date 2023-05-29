@@ -22,8 +22,11 @@ namespace LanchesMac
 
             services.AddTransient<ILancheRepository, LancheRepository>();
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
             services.AddScoped(sp => CarrinhoCompra.GetCarrinho(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+
             services.AddMemoryCache();
             services.AddSession();
         }
