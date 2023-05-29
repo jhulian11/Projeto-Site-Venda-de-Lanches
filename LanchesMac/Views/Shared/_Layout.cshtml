@@ -29,6 +29,11 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Contato" asp-action="Index">Contato</a>
                         </li>
                     </ul>
+                    <div>
+                        <form class="" asp-controller="Lanche" asp-action="Search" method="get">
+                            <input class="form-control"placeholder="Porcurar Produto" name="searchString" value="@ViewData["searchString"]"/>
+                        </form>
+                    </div>
                     <div class="nav-item d-flex align-items-center">
                         @await Component.InvokeAsync("CarrinhoCompraResumo")
                     </div> 
