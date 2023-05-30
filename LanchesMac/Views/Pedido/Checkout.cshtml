@@ -1,0 +1,58 @@
+﻿@model Pedido
+
+
+<h3 class="mb-3">Voce esta a um passo de completar o seu pedido</h3>
+
+<form asp-action="Checkout" method="post" class="" role="form">
+    <div class="row">
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Nome" class="form-label"></label>
+            <input asp-for="Nome" class="form-control"/>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Sobrenome" class="form-label"></label>
+            <input asp-for="Sobrenome" class="form-control"/>
+            <span asp-validation-for="Sobrenome" class="text-danger"></span>
+        </div> 
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Endereco1" class="form-label"></label>
+            <input asp-for="Endereco1" class="form-control"/>
+            <span asp-validation-for="Endereco1" class="text-danger"></span>
+        </div>
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Endereco2" class="form-label"></label>
+            <input asp-for="Endereco2" class="form-control"/>
+            <span asp-validation-for="Endereco2" class="text-danger"></span>
+        </div> 
+        <div class="col-12 col-md-4 mb-2">
+            <label asp-for="Cep" class="form-label"></label>
+            <input asp-for="Cep" class="form-control"/>
+            <span asp-validation-for="Cep" class="text-danger"></span>
+        </div> 
+        <div class="col-12 col-md-4 mb-2">
+            <label asp-for="Cidade" class="form-label"></label>
+            <input asp-for="Cidade" class="form-control"/>
+            <span asp-validation-for="Cidade" class="text-danger"></span>
+        </div> 
+        <div class="col-12 col-md-4 mb-2">
+            <label asp-for="Estado" class="form-label"></label>
+            <input asp-for="Estado" class="form-control"/>
+            <span asp-validation-for="Estado" class="text-danger"></span>
+        </div>
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Telefone" class="form-label"></label>
+            <input asp-for="Telefone" class="form-control"/>
+            <span asp-validation-for="Telefone" class="text-danger"></span>
+        </div>
+        <div class="col-12 col-md-6 mb-2">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="col-12 mt-2">
+            <input class="btn btn-success" type="submit" value="Concluir Pedido"/>
+            <a class="btn btn-outline-primary" asp-controller="CarrinhoCompra" asp-action="Index">Retornar ao Carrinho</a>
+        </div>
+    </div>
+</form>

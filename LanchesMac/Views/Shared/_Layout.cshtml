@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - LanchesMac</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/LanchesMac.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -30,8 +31,13 @@
                         </li>
                     </ul>
                     <div>
-                        <form class="" asp-controller="Lanche" asp-action="Search" method="get">
-                            <input class="form-control"placeholder="Porcurar Produto" name="searchString" value="@ViewData["searchString"]"/>
+                        <form class="row" asp-controller="Lanche" asp-action="Search" method="get">
+                            <div class="col-auto">
+                                <input class="form-control"placeholder="Porcurar Produto" name="searchString" value="@ViewData["searchString"]"/>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary"> <i class="bi bi-search"></i></button>
+                            </div>
                         </form>
                     </div>
                     <div class="nav-item d-flex align-items-center">
