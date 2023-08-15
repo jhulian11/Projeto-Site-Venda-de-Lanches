@@ -30,7 +30,7 @@ namespace LanchesMac.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var user = await _userManager.FindByEmailAsync(model.UserName);
+            var user = await _userManager.FindByNameAsync(model.UserName);
 
             if (user != null)
             {
@@ -46,6 +46,35 @@ namespace LanchesMac.Controllers
             }
             ModelState.AddModelError("", "Falha ao realizar o login !");
             return View(model);
+        }
+
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(LoginViewModel redistroVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new IdentityUser{UserName = redistroVM.UserName};
+                var result = await _userManager.CreateAsync(user, redistroVM.Password);
+
+                if (result.Succeeded)
+                {
+                    //await _signInManager.SignInAsync(user, isPersistent:false);
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    this.ModelState.AddModelError("Registro","Falha ao registrar usuario");
+                }
+            }
+
+            return View(redistroVM);
         }
 
     }
