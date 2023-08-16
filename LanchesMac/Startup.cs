@@ -19,7 +19,7 @@ namespace LanchesMac
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
             services.AddControllersWithViews();
 
             services.AddTransient<ILancheRepository, LancheRepository>();
@@ -58,9 +58,14 @@ namespace LanchesMac
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name:"categoriaFiltro",
-                    pattern:"Lanche/{action}/{categoria?}",
-                    defaults:new {Controller = "Lanche", action = "List"}
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
+                    name: "categoriaFiltro",
+                    pattern: "Lanche/{action}/{categoria?}",
+                    defaults: new { Controller = "Lanche", action = "List" }
                     );
 
                 endpoints.MapControllerRoute(
