@@ -60,17 +60,18 @@ namespace LanchesMac.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser{UserName = redistroVM.UserName};
+                var user = new IdentityUser { UserName = redistroVM.UserName };
                 var result = await _userManager.CreateAsync(user, redistroVM.Password);
 
                 if (result.Succeeded)
                 {
                     //await _signInManager.SignInAsync(user, isPersistent:false);
+                    await _userManager.AddToRoleAsync(user, "Member");
                     return RedirectToAction("Login", "Account");
                 }
                 else
                 {
-                    this.ModelState.AddModelError("Registro","Falha ao registrar usuario");
+                    this.ModelState.AddModelError("Registro", "Falha ao registrar usuario");
                 }
             }
 
@@ -85,6 +86,12 @@ namespace LanchesMac.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
 
     }
 }
