@@ -41,6 +41,7 @@ namespace LanchesMac
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
             services.AddScoped<RelatorioVendasService>();
+            services.AddScoped<GraficoVendasService>();
 
             services.AddAuthorization(options =>
             {
