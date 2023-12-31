@@ -1,6 +1,7 @@
 # Project Overview:
 
 Welcome to LanchesMac, an exciting project that introduces you to the world of web development using ASP.NET Core 6, C#, Entity Framework Core, and a touch of Bootstrap for a delightful user interface. This project focuses on creating a web application for a sandwich shop, featuring a comprehensive CRUD system, a user-friendly landing page showcasing favorite sandwiches, and an admin section with analytics and product management capabilities.
+
 **ASP.NET Core 6 MVC Architecture:**
 
 Explore the power and flexibility of ASP.NET Core 6 as you delve into the MVC architecture. Gain insights into creating modular, maintainable, and scalable web applications.
